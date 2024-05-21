@@ -15,6 +15,11 @@ void MagicPrinter::PrintInteger(const int in_value) {
   ROS_INFO_STREAM("Integer Value: " << in_value);
 }
 
+void MagicPrinter::PrintString(const std::string in_value) {
+
+  ROS_INFO_STREAM("String Value: " << in_value);
+}
+
 // Destructor
 MagicPrinter::~MagicPrinter() {
   cout << "MagicPrinter Destructor is called" << endl;

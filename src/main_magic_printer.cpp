@@ -1,4 +1,5 @@
 #include "unit6_exercises/magic_printer.h"
+#include <string>
 
 int main(int argc, char **argv) {
 
@@ -10,6 +11,9 @@ int main(int argc, char **argv) {
 
   int value_integer = 42;
   magic_printer_object.PrintInteger(value_integer);
+
+  std::string value_string = "Adventure time!";
+  magic_printer_object.PrintString(value_string);
 
   return 0;
 }

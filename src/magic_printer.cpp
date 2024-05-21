@@ -10,20 +10,6 @@ MagicPrinter::MagicPrinter(ros::NodeHandle &ros_node) {
   }
 }
 
-// void MagicPrinter::PrintInteger(const int in_value) {
-
-//   ROS_INFO_STREAM("Integer Value: " << in_value);
-// }
-
-// void MagicPrinter::PrintString(const std::string in_value) {
-
-//   ROS_INFO_STREAM("String Value: " << in_value);
-// }
-
-template <typename T> void MagicPrinter::PrintGeneric(T in_value) {
-    ROS_INFO_STREAM("Generic value: " << in_value);
-}
-
 // Destructor
 MagicPrinter::~MagicPrinter() {
   cout << "MagicPrinter Destructor is called" << endl;

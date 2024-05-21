@@ -10,11 +10,9 @@ int main(int argc, char **argv) {
   MagicPrinter magic_printer_object(_n);
 
   int value_integer = 42;
-//   magic_printer_object.PrintInteger(value_integer);
   magic_printer_object.PrintGeneric<int>(value_integer);
 
-  std::string value_string = "Adventure time!";  
-//   magic_printer_object.PrintString(value_string);
+  std::string value_string = "Adventure time again!";  
   magic_printer_object.PrintGeneric<std::string>(value_string);
 
   return 0;

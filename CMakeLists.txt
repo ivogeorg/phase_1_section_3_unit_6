@@ -9,6 +9,7 @@ add_compile_options(-std=c++17)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -122,6 +123,9 @@ include_directories(
 add_library(magic_printer_library
   src/magic_printer.cpp
 )
+add_library(topic_subscriber_library
+  src/subscriber_basic.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -134,6 +138,9 @@ add_library(magic_printer_library
 add_executable(main_magic_printer_node 
 	src/main_magic_printer.cpp
 	src/magic_printer.cpp)
+add_executable(main_subscriber_basic_node
+	src/subscriber_basic.cpp
+	src/main_subscriber_basic.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,6 +155,10 @@ add_executable(main_magic_printer_node
 ## Specify libraries to link a library or executable target against
 target_link_libraries(main_magic_printer_node
   magic_printer_library
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(main_subscriber_basic_node
+  topic_subscriber_library
   ${catkin_LIBRARIES}
 )
 

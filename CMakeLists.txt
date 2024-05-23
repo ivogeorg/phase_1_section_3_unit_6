@@ -153,6 +153,9 @@ add_executable(topic_subscriber_function_node
 add_executable(topic_subscriber_class_node
     src/topic_subscriber_class.cpp
 	src/topic_subscriber_class_node_main.cpp)
+add_executable(pcl_topic_subscriber_function_node
+    src/topic_subscriber_function.cpp
+	src/pcl_topic_subscriber_function_node_main.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -178,6 +181,10 @@ target_link_libraries(topic_subscriber_function_node
   ${catkin_LIBRARIES}
 )
 target_link_libraries(topic_subscriber_class_node
+  topic_subscriber_class_library
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(pcl_topic_subscriber_function_node
   topic_subscriber_class_library
   ${catkin_LIBRARIES}
 )

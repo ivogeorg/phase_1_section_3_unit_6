@@ -12,3 +12,9 @@
 [`topic_subscriber_function.cpp`](src/topic_subscriber_function.cpp)
 [`topic_subscriber_function_node_main.cpp`](src/topic_subscriber_function_node_main.cpp)
 
+#### Class template
+
+[`topic_subscriber_class.h`](src/topic_subscriber_class.h)
+[`topic_subscriber_class.cpp`](src/topic_subscriber_class.cpp)
+[`topic_subscriber_class_node_main.cpp`](src/topic_subscriber_class_node_main.cpp)
+

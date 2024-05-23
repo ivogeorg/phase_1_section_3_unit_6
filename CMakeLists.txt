@@ -129,6 +129,9 @@ add_library(topic_subscriber_library
 add_library(topic_subscriber_function_library
   src/topic_subscriber_function.cpp
 )
+add_library(topic_subscriber_class_library
+  src/topic_subscriber_class.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -146,8 +149,10 @@ add_executable(main_subscriber_basic_node
 	src/main_subscriber_basic.cpp)
 add_executable(topic_subscriber_function_node
     src/topic_subscriber_function.cpp
-	src/topic_subscriber_function_node_main.cpp
-)
+	src/topic_subscriber_function_node_main.cpp)
+add_executable(topic_subscriber_class_node
+    src/topic_subscriber_class.cpp
+	src/topic_subscriber_class_node_main.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -170,6 +175,10 @@ target_link_libraries(main_subscriber_basic_node
 )
 target_link_libraries(topic_subscriber_function_node
   topic_subscriber_function_library
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(topic_subscriber_class_node
+  topic_subscriber_class_library
   ${catkin_LIBRARIES}
 )
 

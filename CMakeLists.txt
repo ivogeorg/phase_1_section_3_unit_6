@@ -126,6 +126,9 @@ add_library(magic_printer_library
 add_library(topic_subscriber_library
   src/subscriber_basic.cpp
 )
+add_library(topic_subscriber_function_library
+  src/topic_subscriber_function.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -141,6 +144,10 @@ add_executable(main_magic_printer_node
 add_executable(main_subscriber_basic_node
 	src/subscriber_basic.cpp
 	src/main_subscriber_basic.cpp)
+add_executable(topic_subscriber_function_node
+    src/topic_subscriber_function.cpp
+	src/topic_subscriber_function_node_main.cpp
+)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -159,6 +166,10 @@ target_link_libraries(main_magic_printer_node
 )
 target_link_libraries(main_subscriber_basic_node
   topic_subscriber_library
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(topic_subscriber_function_node
+  topic_subscriber_function_library
   ${catkin_LIBRARIES}
 )
 

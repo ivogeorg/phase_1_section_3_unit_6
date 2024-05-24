@@ -8,11 +8,10 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "magic_pcl_susbcriber_main_node");
 
   ros::NodeHandle _n("magic_pcl_susbcriber_main_ns");
-  string topic_name = "/camera/rgb/image_raw";
+  std::string sub_topic_name = "/camera/rgb/image_raw";
+  std::string pub_topic_name = "/out/edge_detection";
 
-  MagicSubscriber magic_subscriber_object;
-
-  magic_subscriber_object.init<Image>(_n, topic_name);
+  MagicSubscriber<Image> magic_subscriber_object(_n, sub_topic_name, pub_topic_name);
 
   ros::spin();
 

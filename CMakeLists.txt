@@ -133,6 +133,10 @@ add_library(topic_subscriber_class_library
   src/topic_subscriber_class.cpp
 )
 
+add_library(specialized_example_lib
+  src/specialized_example.cpp
+)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -161,6 +165,10 @@ add_executable(basic_class_template_specialization_example
     src/basic_example_u6_specialization.cpp)
 add_executable(basic_function_template_specialization_example
     src/basic_example_u6_specialization_functions.cpp)
+
+add_executable(specialized_example
+    src/specialized_example.cpp
+	src/main_specialized_example.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -200,6 +208,12 @@ target_link_libraries(basic_class_template_specialization_example
 target_link_libraries(basic_function_template_specialization_example
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(specialized_example
+  specialized_example_lib
+  ${catkin_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############

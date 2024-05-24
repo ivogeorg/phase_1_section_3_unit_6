@@ -16,8 +16,8 @@ public:
   void CallbackToTopic(const typename ROSMessageType::ConstPtr &msg);
 
 private:
-  ros::NodeHandle *nh_;
-  string m_subscriber_topic_;
+  ros::NodeHandle *m_ros_node_object;
+  string m_subscriber_topic;
   ros::Subscriber image_sub_;
 };
 

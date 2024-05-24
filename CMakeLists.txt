@@ -146,6 +146,9 @@ add_library(magic_subscriber_image_edgedetector_library
 add_library(magic_subscriber_pcl2image_library
   src/magic_subscriber_pcl2image.cpp
 )
+add_library(specialized_complete_library
+  src/specialized_complete.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -184,6 +187,8 @@ add_executable(main_edge_detector_node
     src/main_edge_detector.cpp)
 add_executable(main_pcl2image_node
     src/main_pcl2image.cpp)
+add_executable(specialized_complete_node
+    src/main_specialized_complete.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -235,6 +240,10 @@ target_link_libraries(main_edge_detector_node
 )
 target_link_libraries(main_pcl2image_node
   magic_subscriber_pcl2image_library
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(specialized_complete_node
+  specialized_complete_library
   ${catkin_LIBRARIES}
 )
 

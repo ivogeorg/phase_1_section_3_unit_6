@@ -47,3 +47,8 @@ Data type: [`sensor_msgs/PointCloud2`](https://docs.ros.org/en/melodic/api/senso
 [`magic_subscriber_pcl2image.cpp`](src/magic_subscriber_pcl2image.cpp)  
 [`main_pcl2image.h`](src/main_pcl2image.h)  
 
+#### Complete specialization
+
+[`specialized_complete.h`](src/specialized_complete.h)  
+[`specialized_complete.cpp`](src/specialized_complete.cpp)  
+[`main_specialized_complete.cpp`](src/main_specialized_complete.cpp)  

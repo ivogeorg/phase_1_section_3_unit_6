@@ -16,8 +16,8 @@ public:
   void CallbackToTopic(const typename ROSMessageType::ConstPtr &msg);
 
 private:
-  ros::NodeHandle *m_ros_node_object;
-  string m_subscriber_topic;
+  ros::NodeHandle *nh_;
+  string m_subscriber_topic_;
   ros::Subscriber image_sub_;
 };
 
@@ -35,6 +35,7 @@ MagicSubscriber<ROSMessageType>::MagicSubscriber(
     ros::console::notifyLoggerLevelsChanged();
   }
 
+  // NOTE: generic callback registered
   image_sub_ = this->m_ros_node_object->subscribe(
       this->m_subscriber_topic, 1,
       &MagicSubscriber<ROSMessageType>::CallbackToTopic, this);
@@ -45,6 +46,9 @@ MagicSubscriber<ROSMessageType>::~MagicSubscriber() {
   cout << "MagicSubscriber Destructor is called" << endl;
 }
 
+// callbacks
+
+// generic
 template <typename ROSMessageType>
 void MagicSubscriber<ROSMessageType>::CallbackToTopic(
     const typename ROSMessageType::ConstPtr &msg) {
@@ -52,6 +56,7 @@ void MagicSubscriber<ROSMessageType>::CallbackToTopic(
   ROS_INFO_STREAM("GENERIC Template Callback message =" << msg);
 }
 
+// specialization Image
 template <>
 inline void
 MagicSubscriber<Image>::CallbackToTopic(const Image::ConstPtr &msg) {
@@ -60,6 +65,7 @@ MagicSubscriber<Image>::CallbackToTopic(const Image::ConstPtr &msg) {
                   << static_cast<int>(msg->data[0]));
 }
 
+// specialization PointCloud2
 template <>
 inline void MagicSubscriber<PointCloud2>::CallbackToTopic(
     const PointCloud2::ConstPtr &msg) {

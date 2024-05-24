@@ -29,7 +29,7 @@ Data type: [`sensor_msgs/PointCloud2`](https://docs.ros.org/en/melodic/api/senso
 [`topic_subscriber_class.cpp`](src/topic_subscriber_class.cpp)  
 [`topic_subscriber_class_node_main.cpp`](src/topic_subscriber_class_node_main.cpp)  
 
-#### Callback specialization specialised_example
+#### Callback specialization example
 
 [`specialized_example.h`](src/specialized_example.h)  
 [`specialized_example.cpp`](src/specialized_example.cpp)  
@@ -41,7 +41,7 @@ Data type: [`sensor_msgs/PointCloud2`](https://docs.ros.org/en/melodic/api/senso
 [`magic_subscriber_image_edgedetector.cpp`](src/magic_subscriber_image_edgedetector.cpp)  
 [`main_edge detector.cpp`](src/main_edge detector.cpp)  
 
-#### Depth from point cloud specialization
+#### Depth from point cloud callback specialization
 
 [`magic_subscriber_pcl2image.h`](src/magic_subscriber_pcl2image.h)  
 [`magic_subscriber_pcl2image.cpp`](src/magic_subscriber_pcl2image.cpp)  

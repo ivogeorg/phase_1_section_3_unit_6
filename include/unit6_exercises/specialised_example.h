@@ -38,19 +38,19 @@ MagicSubscriber<ROSMessageType>::MagicSubscriber(
   image_sub_ = this->m_ros_node_object->subscribe(
       this->m_subscriber_topic, 1,
       &MagicSubscriber<ROSMessageType>::CallbackToTopic, this);
-};
+}
 
 template <typename ROSMessageType>
 MagicSubscriber<ROSMessageType>::~MagicSubscriber() {
   cout << "MagicSubscriber Destructor is called" << endl;
-};
+}
 
 template <typename ROSMessageType>
 void MagicSubscriber<ROSMessageType>::CallbackToTopic(
     const typename ROSMessageType::ConstPtr &msg) {
   // the uint8 is an alias of unsigned char, therefore needs casting to int
   ROS_INFO_STREAM("GENERIC Template Callback message =" << msg);
-};
+}
 
 template <>
 inline void
@@ -58,7 +58,7 @@ MagicSubscriber<Image>::CallbackToTopic(const Image::ConstPtr &msg) {
   // the uint8 is an alias of unsigned char, therefore needs casting to int
   ROS_INFO_STREAM("Specialised IMAGE Template Callback Data[0]="
                   << static_cast<int>(msg->data[0]));
-};
+}
 
 template <>
 inline void MagicSubscriber<PointCloud2>::CallbackToTopic(
@@ -66,6 +66,6 @@ inline void MagicSubscriber<PointCloud2>::CallbackToTopic(
   // the uint8 is an alias of unsigned char, therefore needs casting to int
   ROS_INFO_STREAM("Specialised POINTCLOUD Template Callback Data[0]="
                   << static_cast<int>(msg->data[0]));
-};
+}
 
 #endif

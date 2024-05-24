@@ -5,29 +5,40 @@
 #include <ros/ros.h>
 // Image message
 #include <sensor_msgs/Image.h>
+// PointCloud message
+#include <sensor_msgs/PointCloud.h>
 // pcl::toROSMsg
 #include <pcl_conversions/pcl_conversions.h>
-// stl stuff
-#include <cv_bridge/cv_bridge.h>
-#include <sensor_msgs/Image.h>
-#include <sensor_msgs/PointCloud.h>
 #include <sensor_msgs/point_cloud_conversion.h>
+// OpenCV bridge
+#include <cv_bridge/cv_bridge.h>
+// STL
 #include <string>
 
-using namespace std;
-using namespace cv;
+// TODO:
+// 1. Move `init` into constructor with a proper init list (like specialized example)
+// 2. Make callbacks private (as it should be, since they are called through `this` pointer)
+// 3. One generic callback and one specialized for PointCloud (like specialized example)
+// 4. Add publication_topic parameter to constructor (for clarity in `main`)
+// 5. Move function definitions outside of the class declaration (like specialized example)
 
 class MagicSubscriber {
+  ros::NodeHandle *m_ros_node_object;
+  std::string m_subscriber_topic;
+  ros::Subscriber image_sub_;
+  ros::Publisher image_pub_;
+  sensor_msgs::Image image_;
+
 public:
   MagicSubscriber() {
-    cout << "MagicSubscriber Constructor is called" << endl;
+    std::cout << "MagicSubscriber Constructor is called\n";
   };
   ~MagicSubscriber() {
-    cout << "MagicSubscriber Destructor is called" << endl;
+    std::cout << "MagicSubscriber Destructor is called\n";
   };
 
   template <typename ROSMessageType>
-  void init(ros::NodeHandle &ros_node, const string subscriber_topic) {
+  void init(ros::NodeHandle &ros_node, const std::string subscriber_topic) {
     // We used an initialiser list
     this->m_subscriber_topic = subscriber_topic;
     this->m_ros_node_object = &ros_node;
@@ -72,8 +83,8 @@ public:
     int cam_info_height = 480;
     int cam_info_width = 640;
 
-    Mat cv_image = Mat(cam_info_height, cam_info_width, CV_32FC1,
-                       Scalar(std::numeric_limits<float>::max()));
+    cv::Mat cv_image = cv::Mat(cam_info_height, cam_info_width, CV_32FC1,
+                       cv::Scalar(std::numeric_limits<float>::max()));
 
     for (int i = 0; i < point_cloud.points.size(); i++) {
       if (point_cloud.points[i].z == point_cloud.points[i].z) {
@@ -93,8 +104,8 @@ public:
       }
     }
 
-    putText(cv_image, "Depth CAM", Point(50, 50), FONT_HERSHEY_DUPLEX, 1,
-            Scalar(0, 255, 0), 2, false);
+    putText(cv_image, "Depth CAM", cv::Point(50, 50), cv::FONT_HERSHEY_DUPLEX, 1,
+            cv::Scalar(0, 255, 0), 2, false);
 
     cv_image.convertTo(cv_image, CV_16UC1);
 
@@ -104,12 +115,6 @@ public:
     image_pub_.publish(output_image);
   };
 
-private:
-  ros::NodeHandle *m_ros_node_object;
-  string m_subscriber_topic;
-  ros::Subscriber image_sub_;
-  ros::Publisher image_pub_;
-  sensor_msgs::Image image_;
 };
 
 #endif

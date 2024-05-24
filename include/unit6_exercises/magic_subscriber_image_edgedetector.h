@@ -13,6 +13,16 @@ static const std::string OPENCV_WINDOW = "Image window";
 using namespace std;
 using namespace cv;
 
+// TODO:
+// 1. Cleanup `#include`s
+// 2. Remove `using namespace` for clarity at code level
+// 3. Move `init` into constructor with a proper init list (like specialized example)
+// 4. Make callbacks private (as it should be, since they are called through `this` pointer)
+// 5. One generic callback and one specialized for PointCloud (like specialized example)
+// 6. Add publication_topic parameter to constructor (for clarity in `main`)
+// 7. Move function definitions outside of the class declaration (like specialized example)
+
+
 class MagicSubscriber {
 public:
   MagicSubscriber() {

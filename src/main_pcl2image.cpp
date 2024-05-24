@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "main_pcl2image_node");
 
   ros::NodeHandle _n("main_pcl2image_ns");
-  string topic_name = "/camera/depth_registered/points";
+  std::string topic_name = "/camera/depth_registered/points";
 
   MagicSubscriber magic_subscriber_object;
 

@@ -4,7 +4,7 @@
 template <typename MyClassTemplateArg> class MyClass {
 public:
   void PrintInputType(std::string in_arg) {
-    std::cout << "Instantiation type: " << typeid(in_arg).name() << std::endl;
+    std::cout << "Class instantiation type: " << typeid(in_arg).name() << std::endl;
   }
 };
 

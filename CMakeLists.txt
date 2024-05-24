@@ -10,6 +10,9 @@ add_compile_options(-std=c++17)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
+  cv_bridge
+  pcl_conversions
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -137,6 +140,10 @@ add_library(specialized_example_lib
   src/specialized_example.cpp
 )
 
+add_library(magic_subscriber_image_edgedetector_library
+  src/magic_subscriber_image_edgedetector.cpp
+)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -170,6 +177,8 @@ add_executable(specialized_example
     src/specialized_example.cpp
 	src/main_specialized_example.cpp)
 
+add_executable(main_edge_detector_node
+    src/main_edge_detector.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -211,6 +220,11 @@ target_link_libraries(basic_function_template_specialization_example
 
 target_link_libraries(specialized_example
   specialized_example_lib
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(main_edge_detector_node
+  magic_subscriber_image_edgedetector_library
   ${catkin_LIBRARIES}
 )
 

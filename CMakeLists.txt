@@ -190,6 +190,9 @@ add_executable(main_pcl2image_node
 add_executable(specialized_complete_node
     src/main_specialized_complete.cpp)
 
+add_executable(lambda_basics_node
+    src/lambda_basics.cpp
+)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -244,6 +247,10 @@ target_link_libraries(main_pcl2image_node
 )
 target_link_libraries(specialized_complete_node
   specialized_complete_library
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(lambda_basics_node
   ${catkin_LIBRARIES}
 )
 
